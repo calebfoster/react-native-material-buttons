@@ -19,7 +19,6 @@ export default class TextButton extends PureComponent {
   static propTypes = {
     ...Button.propTypes,
 
-    title: PropTypes.string.isRequired,
     titleColor: PropTypes.string,
     disabledTitleColor: PropTypes.string,
   };
@@ -34,8 +33,9 @@ export default class TextButton extends PureComponent {
 
     return (
       <Button rippleColor={titleColor} shadeColor={titleColor} style={[styles.container, style]} {...props}>
+
         <Text style={[styles.text, titleStyle]} numberOfLines={1}>
-          {String(title).toUpperCase()}
+          {this.props.children ? this.props.children : String(title)}
         </Text>
       </Button>
     );
